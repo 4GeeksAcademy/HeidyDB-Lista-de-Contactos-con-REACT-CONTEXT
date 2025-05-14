@@ -19,7 +19,7 @@ export const initialStore=()=>{
 
 export default function storeReducer(store, action = {}) {
   switch(action.type){
-    case 'add_task':
+   case 'add_task':
 
       const { id,  color } = action.payload
 
@@ -33,8 +33,6 @@ export default function storeReducer(store, action = {}) {
       return {
         ...store, 
         contacts: [...store.contacts, action.payload] //agregar un contacto a la lista 
-
-
       }
 
     case 'delete_contact':
@@ -42,7 +40,14 @@ export default function storeReducer(store, action = {}) {
       return {
         ...store,
         contacts: store.contacts.filter((contact )=> contact.id !== action.payload)
-     }
+     } 
+    case 'save_contacts':
+
+    return {
+      ...store, 
+      contacts: action.payload
+    }
+
 
     default:
       throw Error('Unknown action.');
