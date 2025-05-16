@@ -28,21 +28,20 @@ const EditContact = () => {
         phone: contacto.phone
       });
     }
-  }, [contacto]);
+  }, []);
 
 
-  const cambiosTexto = (e) => {
+const cambiosTexto = (e) => {
     setForm({
       ...form,
       [e.target.name]: e.target.value
     });
   };
 
-
-  const guardarEdicion = () => { // esta funcion guarda despues de modificar una tarea. y usa el PUT para guardar en la API
+  const guardarEdicion = (id) => { // esta funcion guarda despues de modificar una tarea. y usa el PUT para guardar en la API
   
-    const contactoEditado = { ...store.contacts[indiceEditar], name: store.contacts.name }
-    fetch(`https://playground.4geeks.com/contact/agendas/HeidyDB/contacts/${contacto.id}`),
+   // const contactoEditado = { ...store.contacts[indiceEditar], name: store.contacts.name }
+    fetch(`https://playground.4geeks.com/contact/agendas/HeidyDB/contacts/${id}`,
       {
         method: "PUT",
         headers: {
@@ -53,9 +52,9 @@ const EditContact = () => {
           agenda_slug: "HeidyDB" 
         })
 
-      }
+      })
         .then((response) => {
-          if (!response.ok) throw new Error(`Error al guardar el contacto con id ${contacto.id}`);
+          if (!response.ok) throw new Error(`Error al guardar el contacto con id ${id}`);
           return response.json();
         })
         .then((data) => {
@@ -68,13 +67,13 @@ const EditContact = () => {
             type: "save_contacts",
              payload: nuevosContactos
              });
-          navigate("/");
+          
         })
         .catch((error) => {
           console.error("Error:", error);
-        });
-
-    if (!contacto) return <div>Contacto no encontrado</div>;
+        })
+      }
+    
     return (
       <div>
         <h1>  Pagina EditContact con id {id}</h1>
@@ -89,14 +88,15 @@ const EditContact = () => {
               <div className="col-md-12">
                 <label htmlFor="inputCity" className="form-label">Full Name</label>
                 <input type="text" className="form-control" id="inputName"
-                  onchange={cambiosTexto()}
+                 onChange = {cambiosTexto}
                   name="name"
-                  value={form.name} />
+                 value={form.name} />
               </div>
+
               <div className="col-md-12">
                 <label htmlFor="inputEmail4" className="form-label" >Email</label>
                 <input type="email" className="form-control" id="inputEmail"
-                  onchange={cambiosTexto()}
+                  onChange = {cambiosTexto}
                   name="email"
                   value={form.email} />
               </div>
@@ -104,27 +104,30 @@ const EditContact = () => {
               <div className="col-12">
                 <label htmlFor="inputAddress" className="form-label" placeholder="Phone">Phone</label>
                 <input type="text" className="form-control" id="inputAddress"
-                  onchange={cambiosTexto()}
+                  onChange = {cambiosTexto}
                   name="phone"
                   value={form.phone} />
               </div>
+
               <div className="col-12">
                 <label htmlFor="inputAddress2" className="form-label">Address </label>
                 <input type="text" className="form-control" id="inputAddress"
-                  onchange={cambiosTexto()}
+                  onChange = {cambiosTexto}
                   name="address"
                   value={form.address} />
               </div>
                         
               <Link className="col-12 d-flex justify-content-center" to="/" > get back to Contact List</Link>   { /* esto lleva a la pagina principal */}
-              <button className="col-12 d-flex btn btn-success justify-content-center" to="/" onclick={guardarEdicion}> Save</button>
-
+              <button className="col-12 d-flex btn btn-success justify-content-center" to="/"
+               onClick={(e) => {
+                e.preventDefault();
+                guardarEdicion(contacto.id);
+                navigate("/")}}> Save</button>
             </form>
           </div>
         </div>
       </div>
     )
-  }
 }
 export default EditContact;
 

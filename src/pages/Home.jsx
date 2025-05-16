@@ -147,7 +147,6 @@ const eliminarContacto = (indiceEliminar) => { // esta tarea se quitara con el e
                     <div className="email fw-light text-lowercase mb-0">
                     <p><i className="fa-solid fa-envelope  me-2"></i>
                     {contact.email}</p></div>
-                     
               </div>      
                 
                 <div className = "col-2 align-items-end">
