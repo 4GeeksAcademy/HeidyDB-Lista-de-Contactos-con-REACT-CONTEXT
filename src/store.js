@@ -1,8 +1,8 @@
 export const initialStore=()=>{
   return{
     message: null,
-    contacts:[],
-    todos: [
+    contacts:[], // declaro la variable aqui 
+   /* todos: [ 
       {
         id: 1,
         title: "Make the bed",
@@ -13,7 +13,7 @@ export const initialStore=()=>{
         title: "Do my homework",
         background: null,
       }
-    ]
+    ]  */
   }
 }
 
