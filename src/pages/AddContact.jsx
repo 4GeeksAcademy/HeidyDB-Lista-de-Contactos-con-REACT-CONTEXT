@@ -76,7 +76,7 @@ const guardarContacto= () => {
           }}>
 
           <div className="col-md-12">
-            <label htmlFor="inputFullName" className="form-label text-lowercase">Full Name</label>
+            <label htmlFor="inputFullName" className="form-label ">Full Name</label>
             <input type="text" className="form-control" id="inputName" name="name"
               placeholder="Pepito Perez"
               value={form.name}

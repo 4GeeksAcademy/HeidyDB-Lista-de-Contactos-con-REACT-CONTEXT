@@ -133,15 +133,15 @@ const eliminarContacto = (indiceEliminar) => { // esta tarea se quitara con el e
                 </div>
              <div className = " col-8 mb-0 fs-9 p-0 ms-3">
                    <div className=" name" ></div>
-                    <div className=""> <p>
+                    <div className="text-capitalize"> <p>
                     {contact.name}</p></div>
 
                     <div className="address fw-light mb-0">
-                    <p> <i className="fa-solid fa-location-dot me-2"></i>
+                    <p className = "mb-0"> <i className="fa-solid fa-location-dot me-2"></i>
                     {contact.address}</p></div>
 
                     <div className="phone fw-light mb-0"> 
-                    <p><i className="fa-solid fa-phone me-2"></i> 
+                    <p className = "mb-0"><i className="fa-solid fa-phone me-2"></i> 
                     {contact.phone}</p></div>
                     
                     <div className="email fw-light text-lowercase mb-0">

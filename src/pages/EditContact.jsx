@@ -117,8 +117,10 @@ const cambiosTexto = (e) => {
                   value={form.address} />
               </div>
                         
-              <Link className="col-12 d-flex justify-content-center" to="/" > get back to Contact List</Link>   { /* esto lleva a la pagina principal */}
-              <button className="col-12 d-flex btn btn-success justify-content-center" to="/"
+              <Link className="col-12 d-flex justify-content-center" to="/" > get back to Contact List</Link> 
+                { /* esto lleva a la pagina principal */}
+
+              <button className="col-12 d-flex btn btn-success justify-content-center" 
                onClick={(e) => {
                 e.preventDefault();
                 guardarEdicion(contacto.id);
